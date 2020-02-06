@@ -1,0 +1,150 @@
+:root {
+    --main_color: rgb(76, 216, 157);
+}
+
+* {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+
+body {
+    height: 100%;
+    background-color: #222;
+}
+
+.text_white {
+    font-weight: 800;
+    color: #fff;
+}
+
+.input_div {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+}
+
+.input_div .addinput {
+    padding: 0.5rem 1rem;
+    height: 50px;
+    outline: none;
+    background-color: #fff;
+    width: 450px;
+    font-size: 1.15rem;
+    margin: 0.25rem;
+    border-radius: 25px;
+}
+
+.addButton {
+    height: 50px;
+    width: 50px;
+    border-radius: 25px;
+    outline: none;
+    border: none;
+    background-color: var(--main_color);
+    color: #fff;
+    margin: 0.25rem;
+    cursor: pointer;
+    font-size: 2.3rem;
+    transition: all .3s ease;
+}
+
+.addButton:hover {
+    color: #ddd;
+    background-color: rgb(32, 165, 170);
+}
+
+.container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    margin-top: 2rem;
+}
+
+.todo {
+    padding: 0.5rem;
+    margin-bottom: 1.5rem;
+    border-bottom: 4px solid #fff;
+}
+
+.todo_input {
+    background: none;
+    outline: none;
+    color: #fff;
+    border: none;
+    width: 350px;
+    font-size: 1.2rem;
+    padding: 10px;
+    transition: all .5s;
+    border-radius: 10px;
+}
+
+.editButton {
+    font-size: 1.2rem;
+    margin: 0 0.5rem;
+    background: none;
+    outline: none;
+    background-color: var(--main_color);
+    border: none;
+    cursor: pointer;
+    padding: 10px;
+    color: #fff;
+    border-radius: 10px;
+}
+
+.removeButton {
+    font-size: 1.2rem;
+    margin: 0 0.5rem;
+    background: none;
+    outline: none;
+    background-color: rgb(209, 36, 36);
+    border: none;
+    cursor: pointer;
+    padding: 10px;
+    color: #fff;
+    border-radius: 10px;
+}
+
+.finished {
+    background-color: #fff;
+    color: #000;
+}
+
+.titleP {
+    color: #fff;
+    text-align: center;
+    margin-bottom: 3rem;
+    font-weight: bold;
+}
+
+h1 {
+    font-size: 3rem;
+    font-weight: 50px;
+    margin: 4.2rem 0 0.5rem;
+    text-align: center;
+    color: var(--main_color);
+}
+
+footer {
+    color: #fff;
+    text-align: center;
+    margin: 3rem;
+    animation: footer 6s infinite alternate-reverse;
+}
+
+@keyframes footer {
+    0% {
+        color: #afa;
+    }
+
+    50% {
+        color: #faf;
+    }
+
+    100% {
+        color: #aaf;
+    }
+}

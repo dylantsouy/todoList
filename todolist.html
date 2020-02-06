@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"
+    >
+    <meta
+        http-equiv="X-UA-Compatible"
+        content="ie=edge"
+    >
+    <title>Document</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+    <h1><span class="text_white">Todo</span> List</h1>
+    <p class="titleP">JS 代辦清單實例</p>
+    <div class="input_div"">
+        <input type="text" class="addinput" placeholder="輸入代辦事項">
+        <button class="addButton">+</button>
+    </div>
+    <div class="container">
+        <!-- 要新增的地方 -->
+    </div>
+    <footer>
+        &copy; Design By Dylan
+    </footer>
+    <script>
+        //定義新增區域的變量
+        let addInput = document.querySelector('.addinput');
+        let container = document.querySelector('.container');
+        let addButton = document.querySelector('.addButton');
+        //定義物件
+        class todos {
+            constructor(todo) {
+                this.createTodo(todo);
+            }
+            //新增todo的方法
+            createTodo(todo) {
+                //新增一個div>todoArea
+                let todoArea = document.createElement('div');
+                todoArea.classList.add('todo')
+                //新增一個input
+                let todoInput = document.createElement('input');
+                todoInput.value = todo;
+                todoInput.type = "text";
+                todoInput.classList.add('todo_input');
+                todoInput.placeholder = "輸入些什麼";
+                todoInput.disabled = true;
+                //新增一個editButton
+                let editButton = document.createElement('button');
+                editButton.classList.add('editButton');
+                editButton.innerHTML = "編輯";
+                //新增一個removeButton
+                let removeButton = document.createElement('button');
+                removeButton.classList.add('removeButton');
+                removeButton.innerHTML = "刪除";
+                //新增div todoArea到container裡
+                container.appendChild(todoArea);
+                //新增input跟按鈕到div todoArea裡
+                todoArea.appendChild(todoInput);
+                todoArea.appendChild(editButton);
+                todoArea.appendChild(removeButton);
+                //監聽修改及移除功能
+                editButton.addEventListener('click', () => this.editTodo(todoInput, editButton));
+                removeButton.addEventListener('click', () => this.removeTodo(todoArea));
+            }
+            //編輯方法
+            editTodo(todoInput, editButton) {
+                editButton.innerHTML = (editButton.innerText == "編輯") ? "完成" : "編輯";
+                if (editButton.innerText == "完成") {
+                    todoInput.classList.add('finished');
+                    todoInput.disabled = false;
+                    todoInput.focus();
+                    addInput.style.border = "none"
+                } else {
+                    todoInput.classList.remove('finished');
+                    todoInput.disabled = true;
+                    addInput.focus();
+                    addInput.style.border = "none"
+                }
+            }
+            //移除方法
+            removeTodo(todoArea) {
+                container.removeChild(todoArea)
+                addInput.value = '';
+                addInput.focus();
+                addInput.style.border = "none"
+            }
+        }
+        //檢查是否為空,若不是則新增物件
+        function check() {
+            if (addInput.value == "") {
+                addInput.style.border = "solid 2px #f34"
+                addInput.focus();
+            }
+            if (addInput.value != "") {
+                new todos(addInput.value)
+                addInput.style.border = "none"
+                addInput.value = '';
+                addInput.focus();
+            }
+        }
+        //點擊addbutton實施上方檢查方法
+        addButton.addEventListener('click', check);
+        //使enter也可以實施上方檢查方法
+        window.addEventListener('keydown', (e) => {
+            if (e.which == 13) {
+                check();
+            }
+        })
+    </script>
+</body>
+
+</html>
