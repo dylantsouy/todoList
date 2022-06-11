@@ -70,8 +70,8 @@
             }
             //編輯方法
             editTodo(todoInput, editButton) {
-                editButton.innerHTML = (editButton.innerText == "編輯") ? "完成" : "編輯";
-                if (editButton.innerText == "完成") {
+                editButton.innerText = (editButton.innerText === "編輯") ? "完成" : "編輯";
+                if (editButton.innerText === "完成") {
                     todoInput.classList.add('finished');
                     todoInput.disabled = false;
                     todoInput.focus();
@@ -93,11 +93,11 @@
         }
         //檢查是否為空,若不是則新增物件
         function check() {
-            if (addInput.value == "") {
+            if (addInput.value === "") {
                 addInput.style.border = "solid 2px #f34"
                 addInput.focus();
             }
-            if (addInput.value != "") {
+            if (addInput.value !== "") {
                 new todos(addInput.value)
                 addInput.style.border = "none"
                 addInput.value = '';
@@ -108,7 +108,7 @@
         addButton.addEventListener('click', check);
         //使enter也可以實施上方檢查方法
         window.addEventListener('keydown', (e) => {
-            if (e.which == 13) {
+            if (e.which === 13) {
                 check();
             }
         })
